@@ -223,3 +223,8 @@ kernel vec4 myHazeRemovalKernel(
     }
 }
 
+extension YPFilter: Equatable {
+    public static func == (lhs: YPFilter, rhs: YPFilter) -> Bool {
+        lhs.name == rhs.name
+    }
+}

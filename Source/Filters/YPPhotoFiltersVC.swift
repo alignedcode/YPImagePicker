@@ -181,9 +181,7 @@ extension YPPhotoFiltersVC: UICollectionViewDataSource {
                                  for: indexPath) as? YPFilterCollectionViewCell {
             cell.name.text = filter.name
             cell.imageView.image = image
-            cell.paidView.isHidden = !paidFilters.contains(where: { item -> Bool in
-              filter.name == item.name
-            })
+            cell.paidView.isHidden = !paidFilters.contains(filter)
             return cell
         }
         return UICollectionViewCell()
