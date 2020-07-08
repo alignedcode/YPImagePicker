@@ -30,6 +30,7 @@ open class YPPhotoFiltersVC: UIViewController, IsMediaFilterVC, UIGestureRecogni
 
 
     fileprivate let filters: [YPFilter] = YPConfig.filters
+    fileprivate let paidFilters: [YPFilter] = YPConfig.paidFilters
 
     fileprivate var selectedFilter: YPFilter?
     
@@ -158,6 +159,7 @@ open class YPPhotoFiltersVC: UIViewController, IsMediaFilterVC, UIGestureRecogni
                 self.inputPhoto.modifiedImage = nil
             }
             DispatchQueue.main.async {
+                self.inputPhoto.filter = self.selectedFilter
                 didSave(YPMediaItem.photo(p: self.inputPhoto))
                 self.setupRightBarButton()
             }
@@ -179,6 +181,9 @@ extension YPPhotoFiltersVC: UICollectionViewDataSource {
                                  for: indexPath) as? YPFilterCollectionViewCell {
             cell.name.text = filter.name
             cell.imageView.image = image
+            cell.paidView.isHidden = !paidFilters.contains(where: { item -> Bool in
+              filter.name == item.name
+            })
             return cell
         }
         return UICollectionViewCell()

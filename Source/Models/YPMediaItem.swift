@@ -20,6 +20,7 @@ public class YPMediaPhoto {
     public let fromCamera: Bool
     public let exifMeta: [String: Any]?
     public var asset: PHAsset?
+    public var filter: YPFilter?
     
     public init(image: UIImage, exifMeta: [String: Any]? = nil, fromCamera: Bool = false, asset: PHAsset? = nil) {
         self.originalImage = image

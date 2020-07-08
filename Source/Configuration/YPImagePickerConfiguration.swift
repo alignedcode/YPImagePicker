@@ -116,6 +116,8 @@ public struct YPImagePickerConfiguration {
         YPFilter(name: "Linear", coreImageFilterName: "CISRGBToneCurveToLinear"),
         YPFilter(name: "Sepia", coreImageFilterName: "CISepiaTone"),
         ]
+  
+    public var paidFilters: [YPFilter] = []
     
     /// Migration
     
@@ -213,7 +215,6 @@ public struct YPConfigVideo {
      - "AVAssetExportPresetAppleM4A"
      - "AVAssetExportPreset3840x2160"
      - "AVAssetExportPreset960x540"
-     - "AVAssetExportPresetPassthrough" // without any compression
      */
     public var compression: String = AVAssetExportPresetHighestQuality
     
