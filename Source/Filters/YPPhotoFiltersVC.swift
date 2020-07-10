@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension Notification.Name {
+    public static let kDidSelectPaidFilter = Notification.Name("kDidSelectPaidFilter")
+}
+
 protocol IsMediaFilterVC: class {
     var didSave: ((YPMediaItem) -> Void)? { get set }
     var didCancel: (() -> Void)? { get set }
@@ -21,6 +25,7 @@ open class YPPhotoFiltersVC: UIViewController, IsMediaFilterVC, UIGestureRecogni
         self.inputPhoto = inputPhoto
         self.isFromSelectionVC = isFromSelectionVC
     }
+
     
     public var inputPhoto: YPMediaPhoto!
     public var isFromSelectionVC = false
@@ -193,5 +198,6 @@ extension YPPhotoFiltersVC: UICollectionViewDelegate {
         selectedFilter = filters[indexPath.row]
         currentlySelectedImageThumbnail = filteredThumbnailImagesArray[indexPath.row]
         self.v.imageView.image = currentlySelectedImageThumbnail
+        NotificationCenter.default.post(name: Notification.Name.kDidSelectPaidFilter, object: nil)
     }
 }
