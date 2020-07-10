@@ -198,6 +198,8 @@ extension YPPhotoFiltersVC: UICollectionViewDelegate {
         selectedFilter = filters[indexPath.row]
         currentlySelectedImageThumbnail = filteredThumbnailImagesArray[indexPath.row]
         self.v.imageView.image = currentlySelectedImageThumbnail
-        NotificationCenter.default.post(name: Notification.Name.kDidSelectPaidFilter, object: nil)
+        if paidFilters.contains(selectedFilter!) {
+            NotificationCenter.default.post(name: Notification.Name.kDidSelectPaidFilter, object: nil)
+        }
     }
 }
